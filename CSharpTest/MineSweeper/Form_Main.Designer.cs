@@ -33,8 +33,8 @@
             this.MenuStrip_Main = new System.Windows.Forms.MenuStrip();
             this.gameGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beginnerBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.beginnerBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.intermediateIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expertEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,8 +76,8 @@
             // 
             this.gameGToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameNToolStripMenuItem,
-            this.beginnerBToolStripMenuItem,
             this.toolStripSeparator1,
+            this.beginnerBToolStripMenuItem,
             this.intermediateIToolStripMenuItem,
             this.expertEToolStripMenuItem,
             this.toolStripSeparator2,
@@ -99,28 +99,31 @@
             this.newGameNToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.newGameNToolStripMenuItem.Text = "New Game(&N)";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            // 
             // beginnerBToolStripMenuItem
             // 
             this.beginnerBToolStripMenuItem.Name = "beginnerBToolStripMenuItem";
             this.beginnerBToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.beginnerBToolStripMenuItem.Text = "Beginner(&B)";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            this.beginnerBToolStripMenuItem.Click += new System.EventHandler(this.beginnerBToolStripMenuItem_Click);
             // 
             // intermediateIToolStripMenuItem
             // 
             this.intermediateIToolStripMenuItem.Name = "intermediateIToolStripMenuItem";
             this.intermediateIToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.intermediateIToolStripMenuItem.Text = "Intermediate(I)";
+            this.intermediateIToolStripMenuItem.Click += new System.EventHandler(this.intermediateIToolStripMenuItem_Click);
             // 
             // expertEToolStripMenuItem
             // 
             this.expertEToolStripMenuItem.Name = "expertEToolStripMenuItem";
             this.expertEToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.expertEToolStripMenuItem.Text = "Expert(&E)";
+            this.expertEToolStripMenuItem.Click += new System.EventHandler(this.expertEToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -143,12 +146,14 @@
             this.markMToolStripMenuItem.Name = "markMToolStripMenuItem";
             this.markMToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.markMToolStripMenuItem.Text = "Mark(?)(&M)";
+            this.markMToolStripMenuItem.Click += new System.EventHandler(this.markMToolStripMenuItem_Click);
             // 
             // audioAToolStripMenuItem
             // 
             this.audioAToolStripMenuItem.Name = "audioAToolStripMenuItem";
             this.audioAToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.audioAToolStripMenuItem.Text = "Audio(&A)";
+            this.audioAToolStripMenuItem.Click += new System.EventHandler(this.audioAToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -171,6 +176,7 @@
             this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
             this.exitXToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.exitXToolStripMenuItem.Text = "Exit(&X)";
+            this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
             // 
             // helpHToolStripMenuItem
             // 
@@ -183,8 +189,9 @@
             // aboutAToolStripMenuItem
             // 
             this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(169, 30);
+            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
             this.aboutAToolStripMenuItem.Text = "About(&A)";
+            this.aboutAToolStripMenuItem.Click += new System.EventHandler(this.aboutAToolStripMenuItem_Click);
             // 
             // TableLayoutPanel_Main
             // 

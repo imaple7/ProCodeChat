@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MineSweeper
 {
@@ -15,6 +16,9 @@ namespace MineSweeper
         int nHeight; //Numbers of mine fields in Vertical
         int nMineCnt; //Total numbers of mine fields
 
+        bool bMark;
+        bool bAudio;
+
         public Form_Main()
         {
             InitializeComponent();
@@ -23,7 +27,15 @@ namespace MineSweeper
             nWidth = Properties.Settings.Default.Wdith;
             nHeight = Properties.Settings.Default.Height;
             nMineCnt = Properties.Settings.Default.MineCnt;
+
+            //Initial Mark and Audio Functionality
+            bMark = Properties.Settings.Default.Mark;
+            bMark = Properties.Settings.Default.Audio;
+            markMToolStripMenuItem.Checked = bMark;
+            audioAToolStripMenuItem.Checked = bAudio;
+
             UpdateSize();
+            SelectLevel();
         }
 
         /// <summary>
@@ -66,13 +78,22 @@ namespace MineSweeper
         }
 
         /// <summary>
-        /// Draw Mine field
+        /// Draw Form Content
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form_Main_Paint(object sender, PaintEventArgs e)
         {
+            PaintGame();
+        }
+
+        /// <summary>
+        /// Draw Mine Game Area
+        /// </summary>
+        private void PaintGame()
+        {
             Graphics g = this.CreateGraphics(); //Create Graphics Handler
+            g.FillRectangle(Brushes.White, new Rectangle(0, 0, this.Width, this.Height));
 
             //We need 6px around minefield to make that looks perfect
             int nOffsetX = 6; //Offset of x
@@ -99,7 +120,110 @@ namespace MineSweeper
             int nAdditionY = MenuStrip_Main.Height + TableLayoutPanel_Main.Height; //Include height of Menu strip and Information lable
             this.Width = 12 + 34 * nWidth + nOffsetX; //Set width of window
             this.Height = 12 + 34 * nHeight + nAdditionY + nOffsetY; //Set height of window
+            PaintGame();
+        }
+
+        /// <summary>
+        /// Select difficulty level
+        /// </summary>
+        private void SelectLevel()
+        {
+            if (nWidth == 10 && nHeight == 10 && nMineCnt == 10)
+            {
+                beginnerBToolStripMenuItem.Checked = true;
+                intermediateIToolStripMenuItem.Checked = false;
+                expertEToolStripMenuItem.Checked = false;
+                settingSToolStripMenuItem.Checked = false;
+            }
+            else if (nWidth == 16 && nHeight == 16 && nMineCnt == 40)
+            {
+                beginnerBToolStripMenuItem.Checked = false;
+                intermediateIToolStripMenuItem.Checked = true;
+                expertEToolStripMenuItem.Checked = false;
+                settingSToolStripMenuItem.Checked = false;
+            }
+            else if (nWidth == 30 && nHeight == 16 && nMineCnt == 99)
+            {
+                beginnerBToolStripMenuItem.Checked = false;
+                intermediateIToolStripMenuItem.Checked = false;
+                expertEToolStripMenuItem.Checked = true;
+                settingSToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                beginnerBToolStripMenuItem.Checked = false;
+                intermediateIToolStripMenuItem.Checked = false;
+                expertEToolStripMenuItem.Checked = false;
+                settingSToolStripMenuItem.Checked = true;
+            }
+        }
+
+        private void beginnerBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nWidth = 10;
+            nHeight = 10;
+            nMineCnt = 10;
+            SelectLevel();
+            UpdateSize();
+        }
+
+        private void intermediateIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nWidth = 16;
+            nHeight = 16;
+            nMineCnt = 40;
+            SelectLevel();
+            UpdateSize();
+        }
+
+        private void expertEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nWidth = 30;
+            nHeight = 16;
+            nMineCnt = 99;
+            SelectLevel();
+            UpdateSize();
+        }
+
+        private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure to exit the game?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        /// <summary>
+        /// System About window
+        /// </summary>
+        /// <param name="hWnd">Handler of window</param>
+        /// <param name="szApp">Title</param>
+        /// <param name="szOtherStuff">Content</param>
+        /// <param name="hIcon">Handler of Icon</param>
+        /// <returns></returns>
+        [DllImport("shell32.dll")]
+        public extern static int ShellAbout(IntPtr hWnd, string szApp, string szOtherStuff, IntPtr hIcon);
+
+        /// <summary>
+        /// About Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShellAbout(this.Handle, "Minesweeper", "A minesweeper game using CSharp language.", this.Icon.Handle);
+        }
+
+        private void markMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            markMToolStripMenuItem.Checked = bMark = !bMark;
+        }
+
+        private void audioAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            audioAToolStripMenuItem.Checked = bAudio = !bAudio;
         }
 
     }
+
 }

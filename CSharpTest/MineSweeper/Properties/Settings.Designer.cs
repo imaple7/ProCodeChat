@@ -58,5 +58,29 @@ namespace MineSweeper.Properties {
                 this["MineCnt"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Mark {
+            get {
+                return ((bool)(this["Mark"]));
+            }
+            set {
+                this["Mark"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Audio {
+            get {
+                return ((bool)(this["Audio"]));
+            }
+            set {
+                this["Audio"] = value;
+            }
+        }
     }
 }
