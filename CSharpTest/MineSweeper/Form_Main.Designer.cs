@@ -242,7 +242,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(385, 48);
             this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.label1.Text = "Lable_Mine";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -255,7 +255,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(385, 48);
             this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.label2.Text = "Label_Timer";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Timer_Main
@@ -274,6 +274,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_Main";
             this.Text = "MineSweeper";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Main_Paint);
             this.MenuStrip_Main.ResumeLayout(false);
             this.MenuStrip_Main.PerformLayout();
             this.TableLayoutPanel_Main.ResumeLayout(false);
