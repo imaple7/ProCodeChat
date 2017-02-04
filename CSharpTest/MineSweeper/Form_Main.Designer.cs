@@ -49,11 +49,11 @@
             this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
-            this.PictureBox_Mine = new System.Windows.Forms.PictureBox();
-            this.PictureBox_Timer = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Timer_Main = new System.Windows.Forms.Timer(this.components);
+            this.PictureBox_Mine = new System.Windows.Forms.PictureBox();
+            this.PictureBox_Timer = new System.Windows.Forms.PictureBox();
             this.MenuStrip_Main.SuspendLayout();
             this.TableLayoutPanel_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Mine)).BeginInit();
@@ -135,6 +135,7 @@
             this.settingSToolStripMenuItem.Name = "settingSToolStripMenuItem";
             this.settingSToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.settingSToolStripMenuItem.Text = "Setting(&S)";
+            this.settingSToolStripMenuItem.Click += new System.EventHandler(this.settingSToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -165,6 +166,7 @@
             this.rankRToolStripMenuItem.Name = "rankRToolStripMenuItem";
             this.rankRToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.rankRToolStripMenuItem.Text = "Rank(&R)";
+            this.rankRToolStripMenuItem.Click += new System.EventHandler(this.rankRToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -189,7 +191,7 @@
             // aboutAToolStripMenuItem
             // 
             this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(169, 30);
             this.aboutAToolStripMenuItem.Text = "About(&A)";
             this.aboutAToolStripMenuItem.Click += new System.EventHandler(this.aboutAToolStripMenuItem_Click);
             // 
@@ -216,28 +218,6 @@
             this.TableLayoutPanel_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanel_Main.Size = new System.Drawing.Size(1006, 48);
             this.TableLayoutPanel_Main.TabIndex = 1;
-            // 
-            // PictureBox_Mine
-            // 
-            this.PictureBox_Mine.BackgroundImage = global::MineSweeper.Properties.Resources.Mine_Snow;
-            this.PictureBox_Mine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PictureBox_Mine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBox_Mine.Location = new System.Drawing.Point(35, 3);
-            this.PictureBox_Mine.Name = "PictureBox_Mine";
-            this.PictureBox_Mine.Size = new System.Drawing.Size(42, 42);
-            this.PictureBox_Mine.TabIndex = 0;
-            this.PictureBox_Mine.TabStop = false;
-            // 
-            // PictureBox_Timer
-            // 
-            this.PictureBox_Timer.BackgroundImage = global::MineSweeper.Properties.Resources.Timer;
-            this.PictureBox_Timer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PictureBox_Timer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBox_Timer.Location = new System.Drawing.Point(929, 3);
-            this.PictureBox_Timer.Name = "PictureBox_Timer";
-            this.PictureBox_Timer.Size = new System.Drawing.Size(42, 42);
-            this.PictureBox_Timer.TabIndex = 1;
-            this.PictureBox_Timer.TabStop = false;
             // 
             // label1
             // 
@@ -268,6 +248,28 @@
             // Timer_Main
             // 
             this.Timer_Main.Interval = 1000;
+            // 
+            // PictureBox_Mine
+            // 
+            this.PictureBox_Mine.BackgroundImage = global::MineSweeper.Properties.Resources.Mine_Snow;
+            this.PictureBox_Mine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox_Mine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBox_Mine.Location = new System.Drawing.Point(35, 3);
+            this.PictureBox_Mine.Name = "PictureBox_Mine";
+            this.PictureBox_Mine.Size = new System.Drawing.Size(42, 42);
+            this.PictureBox_Mine.TabIndex = 0;
+            this.PictureBox_Mine.TabStop = false;
+            // 
+            // PictureBox_Timer
+            // 
+            this.PictureBox_Timer.BackgroundImage = global::MineSweeper.Properties.Resources.Timer;
+            this.PictureBox_Timer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox_Timer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBox_Timer.Location = new System.Drawing.Point(929, 3);
+            this.PictureBox_Timer.Name = "PictureBox_Timer";
+            this.PictureBox_Timer.Size = new System.Drawing.Size(42, 42);
+            this.PictureBox_Timer.TabIndex = 1;
+            this.PictureBox_Timer.TabStop = false;
             // 
             // Form_Main
             // 

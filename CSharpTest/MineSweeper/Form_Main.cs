@@ -12,9 +12,9 @@ namespace MineSweeper
 {
     public partial class Form_Main : Form
     {
-        int nWidth; //Numbers of mine fields in Horizontal
-        int nHeight; //Numbers of mine fields in Vertical
-        int nMineCnt; //Total numbers of mine fields
+        public int nWidth; //Numbers of mine fields in Horizontal
+        public int nHeight; //Numbers of mine fields in Vertical
+        public int nMineCnt; //Total numbers of mine fields
 
         bool bMark;
         bool bAudio;
@@ -222,6 +222,19 @@ namespace MineSweeper
         private void audioAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             audioAToolStripMenuItem.Checked = bAudio = !bAudio;
+        }
+
+        private void settingSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Setting Setting = new Form_Setting(this);
+            Setting.ShowDialog();
+            UpdateSize();
+        }
+
+        private void rankRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Rank Rank = new Form_Rank();
+            Rank.ShowDialog();
         }
 
     }
