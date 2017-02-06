@@ -49,11 +49,11 @@
             this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
+            this.PictureBox_Mine = new System.Windows.Forms.PictureBox();
+            this.PictureBox_Timer = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Timer_Main = new System.Windows.Forms.Timer(this.components);
-            this.PictureBox_Mine = new System.Windows.Forms.PictureBox();
-            this.PictureBox_Timer = new System.Windows.Forms.PictureBox();
             this.MenuStrip_Main.SuspendLayout();
             this.TableLayoutPanel_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Mine)).BeginInit();
@@ -98,6 +98,7 @@
             this.newGameNToolStripMenuItem.Name = "newGameNToolStripMenuItem";
             this.newGameNToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
             this.newGameNToolStripMenuItem.Text = "New Game(&N)";
+            this.newGameNToolStripMenuItem.Click += new System.EventHandler(this.newGameNToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -219,6 +220,28 @@
             this.TableLayoutPanel_Main.Size = new System.Drawing.Size(1006, 48);
             this.TableLayoutPanel_Main.TabIndex = 1;
             // 
+            // PictureBox_Mine
+            // 
+            this.PictureBox_Mine.BackgroundImage = global::MineSweeper.Properties.Resources.Mine_Snow;
+            this.PictureBox_Mine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox_Mine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBox_Mine.Location = new System.Drawing.Point(35, 3);
+            this.PictureBox_Mine.Name = "PictureBox_Mine";
+            this.PictureBox_Mine.Size = new System.Drawing.Size(42, 42);
+            this.PictureBox_Mine.TabIndex = 0;
+            this.PictureBox_Mine.TabStop = false;
+            // 
+            // PictureBox_Timer
+            // 
+            this.PictureBox_Timer.BackgroundImage = global::MineSweeper.Properties.Resources.Timer;
+            this.PictureBox_Timer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PictureBox_Timer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBox_Timer.Location = new System.Drawing.Point(929, 3);
+            this.PictureBox_Timer.Name = "PictureBox_Timer";
+            this.PictureBox_Timer.Size = new System.Drawing.Size(42, 42);
+            this.PictureBox_Timer.TabIndex = 1;
+            this.PictureBox_Timer.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -248,28 +271,6 @@
             // Timer_Main
             // 
             this.Timer_Main.Interval = 1000;
-            // 
-            // PictureBox_Mine
-            // 
-            this.PictureBox_Mine.BackgroundImage = global::MineSweeper.Properties.Resources.Mine_Snow;
-            this.PictureBox_Mine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PictureBox_Mine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBox_Mine.Location = new System.Drawing.Point(35, 3);
-            this.PictureBox_Mine.Name = "PictureBox_Mine";
-            this.PictureBox_Mine.Size = new System.Drawing.Size(42, 42);
-            this.PictureBox_Mine.TabIndex = 0;
-            this.PictureBox_Mine.TabStop = false;
-            // 
-            // PictureBox_Timer
-            // 
-            this.PictureBox_Timer.BackgroundImage = global::MineSweeper.Properties.Resources.Timer;
-            this.PictureBox_Timer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PictureBox_Timer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBox_Timer.Location = new System.Drawing.Point(929, 3);
-            this.PictureBox_Timer.Name = "PictureBox_Timer";
-            this.PictureBox_Timer.Size = new System.Drawing.Size(42, 42);
-            this.PictureBox_Timer.TabIndex = 1;
-            this.PictureBox_Timer.TabStop = false;
             // 
             // Form_Main
             // 

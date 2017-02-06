@@ -12,12 +12,18 @@ namespace MineSweeper
 {
     public partial class Form_Main : Form
     {
+        const int MAX_WIDTH = 64; //Max width of mine fields
+        const int MAX_HEIGHT = 32; //MAX height of mine fields
+
         public int nWidth; //Numbers of mine fields in Horizontal
         public int nHeight; //Numbers of mine fields in Vertical
         public int nMineCnt; //Total numbers of mine fields
 
         bool bMark;
         bool bAudio;
+
+        int[,] pMine = new int[MAX_WIDTH, MAX_HEIGHT]; //-1 is mine, 0-8 is nearby mines
+        int[,] pState = new int[MAX_WIDTH, MAX_HEIGHT]; //0 is unopened, 1 is opened, 2 is flaged, 3 is marked
 
         public Form_Main()
         {
@@ -235,6 +241,17 @@ namespace MineSweeper
         {
             Form_Rank Rank = new Form_Rank();
             Rank.ShowDialog();
+        }
+
+        private void newGameNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Sweep two arrays
+            Array.Clear(pMine, 0, pMine.Length);
+            Array.Clear(pState, 0, pState.Length);
+
+            //Initial mine data
+            Random rand = new Random();
+
         }
 
     }

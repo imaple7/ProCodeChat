@@ -30,7 +30,7 @@ namespace MineSweeper
         {
             //Update data to the main form
             Main.nWidth = Convert.ToInt32(NumericUpDown_Width.Value);
-            Main.Height = Convert.ToInt32(NumericUpDown_Height.Value);
+            Main.nHeight = Convert.ToInt32(NumericUpDown_Height.Value);
             Main.nMineCnt = Convert.ToInt32(NumericUpDown_Mine.Value);
 
             this.Close(); //Close the current window
