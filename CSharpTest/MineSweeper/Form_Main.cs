@@ -25,9 +25,17 @@ namespace MineSweeper
         int[,] pMine = new int[MAX_WIDTH, MAX_HEIGHT]; //-1 is mine, 0-8 is nearby mines
         int[,] pState = new int[MAX_WIDTH, MAX_HEIGHT]; //0 is unopened, 1 is opened, 2 is flaged, 3 is marked
 
+        int[] dx = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 }; //X coord offset
+        int[] dy = new int[] { 1, 1, 1, 0, 0, -1, -1, -1 }; //Y coord offset
+
+        Point MouseFocus; //HighLight Point
+
         public Form_Main()
         {
             InitializeComponent();
+
+            //Turn on double buffered
+            this.DoubleBuffered = true;
 
             //Initial game parameters
             nWidth = Properties.Settings.Default.Wdith;
@@ -39,6 +47,9 @@ namespace MineSweeper
             bMark = Properties.Settings.Default.Audio;
             markMToolStripMenuItem.Checked = bMark;
             audioAToolStripMenuItem.Checked = bAudio;
+
+            MouseFocus.X = 0;
+            MouseFocus.Y = 0;
 
             UpdateSize();
             SelectLevel();
@@ -90,16 +101,15 @@ namespace MineSweeper
         /// <param name="e"></param>
         private void Form_Main_Paint(object sender, PaintEventArgs e)
         {
-            PaintGame();
+            PaintGame(e.Graphics);
         }
 
         /// <summary>
         /// Draw Mine Game Area
         /// </summary>
-        private void PaintGame()
+        private void PaintGame(Graphics g)
         {
-            Graphics g = this.CreateGraphics(); //Create Graphics Handler
-            g.FillRectangle(Brushes.White, new Rectangle(0, 0, this.Width, this.Height));
+            g.Clear(Color.White); //Clear the draw area
 
             //We need 6px around minefield to make that looks perfect
             int nOffsetX = 6; //Offset of x
@@ -111,7 +121,16 @@ namespace MineSweeper
                 //Draw Column
                 for (int j = 1; j <= nHeight; j++)
                 {
-                    g.FillRectangle(Brushes.SandyBrown, new Rectangle(nOffsetX + 34 * (i - 1) + 1, nOffsetY + 34 * (j - 1) + 1, 32, 32));
+
+                    if (i == MouseFocus.X && j == MouseFocus.Y)
+                    {
+                        g.FillRectangle(new SolidBrush(Color.FromArgb(100, Color.SandyBrown)), new Rectangle(nOffsetX + 34 * (i - 1) + 1, nOffsetY + 34 * (j - 1) + 1, 32, 32));
+                    }
+                    else
+                    {
+                        g.FillRectangle(Brushes.SandyBrown, new Rectangle(nOffsetX + 34 * (i - 1) + 1, nOffsetY + 34 * (j - 1) + 1, 32, 32));
+                    }
+                    
                 }
             }
         }
@@ -126,7 +145,7 @@ namespace MineSweeper
             int nAdditionY = MenuStrip_Main.Height + TableLayoutPanel_Main.Height; //Include height of Menu strip and Information lable
             this.Width = 12 + 34 * nWidth + nOffsetX; //Set width of window
             this.Height = 12 + 34 * nHeight + nAdditionY + nOffsetY; //Set height of window
-            PaintGame();
+            newGameNToolStripMenuItem_Click(new object(), new EventArgs());
         }
 
         /// <summary>
@@ -245,13 +264,77 @@ namespace MineSweeper
 
         private void newGameNToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Reset Mine count and timer
+            Label_Mine.Text = nMineCnt.ToString();
+            Label_Timer.Text = "0";
+            Timer_Main.Enabled = true;
+
             //Sweep two arrays
             Array.Clear(pMine, 0, pMine.Length);
             Array.Clear(pState, 0, pState.Length);
 
             //Initial mine data
             Random rand = new Random();
+            for (int i = 1; i <= nMineCnt; )
+            {
+                //Get random location of the current mine
+                int x = rand.Next(nWidth) + 1;
+                int y = rand.Next(nHeight) + 1;
 
+                //Determine if that location has already assigned be a mine
+                if (pMine[x, y] != -1)
+                {
+                    pMine[x, y] = -1;
+                    i++;
+                }
+            }
+
+            //Calculate the rest of field
+            for(int i = 1; i <= nWidth; i++) 
+            {
+                for (int j = 1; j <= nHeight; j++)
+                {
+                    //Determine if it is not a mine
+                    if (pMine[i, j] != -1)
+                    {
+                        //Eight direction
+                        for (int k = 0; k < 8; k++)
+                        {
+                            if (pMine[i + dx[k], j + dy[k]] == 1)
+                            {
+                                pMine[i, j]++; //Add one more neighboor mine
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Form_Main_MouseMove(object sender, MouseEventArgs e)
+        {
+            //Not in mine field
+            if(e.X < 6 || e.X > 6 + nWidth*34 ||
+                e.Y < 6 + MenuStrip_Main.Height ||
+                e.Y > 6 + MenuStrip_Main.Height + nHeight * 34)
+            {
+                MouseFocus.X = 0;
+                MouseFocus.Y = 0;
+            }
+            else
+            {
+                int x = (e.X - 6) / 36 + 1; //Get x coord
+                int y = (e.Y - MenuStrip_Main.Height - 6) / 36 + 1; //get y coord
+                MouseFocus.X = x;
+                MouseFocus.Y = y;
+            }
+
+            this.Refresh();
+
+        }
+
+        private void Timer_Main_Tick(object sender, EventArgs e)
+        {
+            Label_Timer.Text = Convert.ToString(Convert.ToInt32(Label_Timer.Text) + 1); //Increase by 1
         }
 
     }

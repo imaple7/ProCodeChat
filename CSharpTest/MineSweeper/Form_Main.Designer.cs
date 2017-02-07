@@ -51,8 +51,8 @@
             this.TableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.PictureBox_Mine = new System.Windows.Forms.PictureBox();
             this.PictureBox_Timer = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Label_Mine = new System.Windows.Forms.Label();
+            this.Label_Timer = new System.Windows.Forms.Label();
             this.Timer_Main = new System.Windows.Forms.Timer(this.components);
             this.MenuStrip_Main.SuspendLayout();
             this.TableLayoutPanel_Main.SuspendLayout();
@@ -210,8 +210,8 @@
             this.TableLayoutPanel_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.TableLayoutPanel_Main.Controls.Add(this.PictureBox_Mine, 1, 0);
             this.TableLayoutPanel_Main.Controls.Add(this.PictureBox_Timer, 7, 0);
-            this.TableLayoutPanel_Main.Controls.Add(this.label1, 3, 0);
-            this.TableLayoutPanel_Main.Controls.Add(this.label2, 5, 0);
+            this.TableLayoutPanel_Main.Controls.Add(this.Label_Mine, 3, 0);
+            this.TableLayoutPanel_Main.Controls.Add(this.Label_Timer, 5, 0);
             this.TableLayoutPanel_Main.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TableLayoutPanel_Main.Location = new System.Drawing.Point(0, 781);
             this.TableLayoutPanel_Main.Name = "TableLayoutPanel_Main";
@@ -242,35 +242,36 @@
             this.PictureBox_Timer.TabIndex = 1;
             this.PictureBox_Timer.TabStop = false;
             // 
-            // label1
+            // Label_Mine
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(99, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(385, 48);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Lable_Mine";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_Mine.AutoSize = true;
+            this.Label_Mine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label_Mine.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Mine.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label_Mine.Location = new System.Drawing.Point(99, 0);
+            this.Label_Mine.Name = "Label_Mine";
+            this.Label_Mine.Size = new System.Drawing.Size(385, 48);
+            this.Label_Mine.TabIndex = 2;
+            this.Label_Mine.Text = "Lable_Mine";
+            this.Label_Mine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // Label_Timer
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(522, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(385, 48);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Label_Timer";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_Timer.AutoSize = true;
+            this.Label_Timer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label_Timer.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Timer.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Label_Timer.Location = new System.Drawing.Point(522, 0);
+            this.Label_Timer.Name = "Label_Timer";
+            this.Label_Timer.Size = new System.Drawing.Size(385, 48);
+            this.Label_Timer.TabIndex = 3;
+            this.Label_Timer.Text = "Label_Timer";
+            this.Label_Timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Timer_Main
             // 
             this.Timer_Main.Interval = 1000;
+            this.Timer_Main.Tick += new System.EventHandler(this.Timer_Main_Tick);
             // 
             // Form_Main
             // 
@@ -285,6 +286,7 @@
             this.Name = "Form_Main";
             this.Text = "MineSweeper";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Main_Paint);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_Main_MouseMove);
             this.MenuStrip_Main.ResumeLayout(false);
             this.MenuStrip_Main.PerformLayout();
             this.TableLayoutPanel_Main.ResumeLayout(false);
@@ -319,8 +321,8 @@
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanel_Main;
         private System.Windows.Forms.PictureBox PictureBox_Mine;
         private System.Windows.Forms.PictureBox PictureBox_Timer;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Label_Mine;
+        private System.Windows.Forms.Label Label_Timer;
         private System.Windows.Forms.Timer Timer_Main;
     }
 }
